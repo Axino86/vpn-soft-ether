@@ -3,6 +3,7 @@
 # SoftEther VPN Server (Ver 4.42, Build 9798, rtm)
 # Скачивается по ссылке:
 # https://www.softether-download.com/files/softether/v4.42-9798-rtm-2023.06.30-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.42-9798-rtm-2023.06.30-linux-x64-64bit.tar.gz
+# http://www.softether-download.com/files/softether/v4.44-9807-rtm-2025.04.16-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.44-9807-rtm-2025.04.16-linux-x64-64bit.tar.gz
 #
 # Copyleft (C) 2023. Все права защищены.
 #
@@ -24,8 +25,8 @@ log_error() {
 ###########################
 # Глобальные переменные   #
 ###########################
-SOFTETHER_URL="https://www.softether-download.com/files/softether/v4.42-9798-rtm-2023.06.30-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.42-9798-rtm-2023.06.30-linux-x64-64bit.tar.gz"
-SOFTETHER_ARCHIVE_NAME="softether-vpnserver-v4.42-9798-rtm-2023.06.30-linux-x64-64bit.tar.gz"
+SOFTETHER_URL="http://www.softether-download.com/files/softether/v4.44-9807-rtm-2025.04.16-tree/Linux/SoftEther_VPN_Server/64bit_-_Intel_x64_or_AMD64/softether-vpnserver-v4.44-9807-rtm-2025.04.16-linux-x64-64bit.tar.gz"
+SOFTETHER_ARCHIVE_NAME="softether-vpnserver-v4.44-9807-rtm-2025.04.16-linux-x64-64bit.tar.gz"
 VPN_SERVER_PASSWORD="softethervpn"  # Дефолтный пароль
 
 #############################
