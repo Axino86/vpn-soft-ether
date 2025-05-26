@@ -16,10 +16,10 @@ curl -ksS "http://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetyp
 curl -ksS https://raw.githubusercontent.com/nomadturk/vpn-adblock/master/hosts-sources/Turkish/hosts >> $temphosts1
 curl -ksS https://adaway.org/hosts.txt >> $temphosts1
 curl -ksS http://www.malwaredomainlist.com/hostslist/hosts.txt >> $temphosts1
-curl -ksS http://hosts-file.net/ad_servers.txt >> $temphosts1
+# curl -ksS http://hosts-file.net/ad_servers.txt >> $temphosts1
 curl -ksS https://raw.githubusercontent.com/nomadturk/vpn-adblock/master/hosts-sources/nomad/hosts  >> $temphosts1
 # https://github.com/Ultimate-Hosts-Blacklist/Ultimate.Hosts.Blacklist
-curl -ksS https://hosts.ubuntu101.co.za/hosts >> $temphosts1
+# curl -ksS https://hosts.ubuntu101.co.za/hosts >> $temphosts1
 
 # Do some work on the file:
 # 1. Remove MS-DOS carriage returns
