@@ -113,7 +113,7 @@ install_softether() {
 ###############################################
 configure_vpn_config() {
     log_info "Скачивание и настройка файла конфигурации vpn_server.config..."
-    wget -O /usr/local/vpnserver/vpn_server.config https://github.com/Axino86/vpn-soft-ether/blob/main/vpn_server.config
+    wget -O /usr/local/vpnserver/vpn_server.config https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/vpn_server.config
     # Генерация случайного MAC-адреса для TAP адаптера
     local MAC
     MAC=$(printf '%.2x\n' "$(shuf -i 0-281474976710655 -n 1)" | sed -r 's/(..)/\1:/g' | cut -d: -f -6 | tr '[:lower:]' '[:upper:]')
@@ -126,7 +126,7 @@ configure_vpn_config() {
 ###########################################
 configure_systemd_service() {
     log_info "Скачивание unit файла systemd для vpnserver..."
-    wget -O /lib/systemd/system/vpnserver.service https://github.com/Axino86/vpn-soft-ether/blob/main/vpnserver.service
+    wget -O /lib/systemd/system/vpnserver.service https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/vpnserver.service
 }
 
 ##########################################
@@ -134,16 +134,16 @@ configure_systemd_service() {
 ##########################################
 configure_dnsmasq() {
     log_info "Скачивание и настройка конфигурации DNSMasq..."
-    wget -O /etc/dnsmasq.conf https://github.com/Axino86/vpn-soft-ether/blob/main/dnsmasq.conf
+    wget -O /etc/dnsmasq.conf https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/dnsmasq.conf
     mkdir -p /etc/systemd/system/dnsmasq.service.d
-    wget -O /etc/systemd/system/dnsmasq.service.d/clearlease.conf https://github.com/Axino86/vpn-soft-ether/blob/main/dnsmasq.service_clearlease.conf
+    wget -O /etc/systemd/system/dnsmasq.service.d/clearlease.conf https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/dnsmasq.service_clearlease.conf
     # Определение текущего сетевого интерфейса
     local NET_INTERFACE
     NET_INTERFACE=$(ip -4 route ls | grep default | grep -Po '(?<=dev )(\S+)' | head -1)
     log_info "Обнаружен сетевой интерфейс: ${NET_INTERFACE}"
     sed -i "s/ens3/${NET_INTERFACE}/g" /etc/dnsmasq.conf
     # Настройка ad-blocking: скачиваем и выполняем скрипт обновления hosts
-    wget -O /root/updateHosts.sh https://github.com/Axino86/vpn-soft-ether/blob/main/updateHosts.sh
+    wget -O /root/updateHosts.sh https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/updateHosts.sh
     chmod a+x /root/updateHosts.sh
     bash /root/updateHosts.sh
 }
@@ -160,7 +160,7 @@ configure_cron_jobs() {
     (crontab -l 2>/dev/null | grep -v -F "${cmd_adblock}" ; echo "${job_adblock}") | crontab -
 
     # Cron для очистки логов
-    wget -O /root/softetherlogpurge.sh https://github.com/Axino86/vpn-soft-ether/blob/main/softetherlogpurge.sh
+    wget -O /root/softetherlogpurge.sh https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/softetherlogpurge.sh
     chmod a+x /root/softetherlogpurge.sh
     local cmd_logpurge="/root/softetherlogpurge.sh >/dev/null 2>&1"
     local job_logpurge="0 0 * * * ${cmd_logpurge}"
@@ -197,9 +197,9 @@ EOL
 ###########################################
 download_iptables_scripts() {
     log_info "Скачивание скриптов для управления iptables..."
-    wget -O /root/softether-iptables.sh https://github.com/Axino86/vpn-soft-ether/blob/main/softether-iptables.sh
+    wget -O /root/softether-iptables.sh https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/softether-iptables.sh
     chmod +x /root/softether-iptables.sh
-    wget -O /root/client_ports_iptables_conf.sh https://github.com/Axino86/vpn-soft-ether/blob/main/client_ports_iptables_conf.sh
+    wget -O /root/client_ports_iptables_conf.sh https://raw.githubusercontent.com/Axino86/vpn-soft-ether/main/client_ports_iptables_conf.sh
     chmod +x /root/client_ports_iptables_conf.sh
     # Создание файла для статической привязки MAC адресов
     touch /etc/ethers
